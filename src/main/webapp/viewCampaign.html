@@ -1,0 +1,59 @@
+<div ng-controller="viewCampaignController">
+	<div class="row">
+	  <div class="col-lg-2">
+	  </div>
+	  <div class="col-lg-8">
+	  		<h2 class="text-center">{{title}}</h2>
+	  </div>
+	  <div class="col-lg-2"></div>
+	</div>
+	<div class="row">
+	  <div class="col-lg-1"></div>
+	  <div class="col-lg-10">
+	  	<h4 class="text-muted">{{blurb}}</h4>
+	  </div>
+	</div>
+	<div class="row">
+	  <div class="col-lg-7">
+	  	<img height="250" width="450" src="http://cdn.grid.fotosearch.com/CSP/CSP532/k5326308.jpg"/>
+	  </div>
+	  <div class="col-lg-5">
+	  <div class="progress">
+		  <div class="progress-bar" role="progressbar" aria-valuenow={{percentComplete}}
+		  aria-valuemin="0" aria-valuemax="100" style="width:{{percentComplete}}%">{{percentComplete}}%
+		  </div>
+	  </div>
+	  <h4 class="text-primary">Fund Raised ${{raised}}</h4>
+	  <h5 class="text-muted">Goal ${{goal}}</h5>
+	  <br/>
+	  <h5 class="text-muted">Created by {{userid}}
+	  <br/>{{city}},{{country}}</h5>
+	  <button type="submit" class="btn btn-primary  btn-block" ng-click="">Donate</button>
+	  <br/>
+	  <div class="row">
+	  		<div class="col-sm-2">
+			  <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text={{title}}">
+				Tweet</a>
+			</div>
+			<div class="col-sm-2">
+				<div id="fb-root"></div>
+					<script>(function(d, s, id) {
+					  var js, fjs = d.getElementsByTagName(s)[0];
+					  if (d.getElementById(id)) return;
+					  js = d.createElement(s); js.id = id;
+					  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.11';
+					  fjs.parentNode.insertBefore(js, fjs);
+					}(document, 'script', 'facebook-jssdk'));</script>
+				
+				  <div class="fb-share-button" data-href="http://www.google.com" data-layout="button" data-mobile-iframe="false"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A5000%2F&amp;src=sdkpreparse">Share</a></div>
+		 	 </div>
+		</div>
+	  </div>
+	</div>
+	<div class="row">
+	<div class="col-lg-12">
+	<br/>
+		 {{description}}
+		</div>
+	</div>
+</div>

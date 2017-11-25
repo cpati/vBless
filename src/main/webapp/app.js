@@ -14,7 +14,11 @@ myApp.config(function($routeProvider, $qProvider) {
 		controller : "userProfileController"
 	}).when("/share", {
 		templateUrl : "share.html",
-		controller : "shareController"
+		controller : "shareController"			
+	}).when("/viewCampaign", {
+		templateUrl : "viewCampaign.html",
+		controller : "viewCampaignController"
+			
 	}).when("/about", {
 		templateUrl : "about.html"
 
@@ -23,8 +27,24 @@ myApp.config(function($routeProvider, $qProvider) {
 		templateUrl : "createCampaign.html",
 		controller : "campaignController"
 	});
-
+	
 	$qProvider.errorOnUnhandledRejections(false);
+});
+
+
+myApp.controller('viewCampaignController', function($scope, $http, httpPost, $location) {
+	console.log("viewCampaignController");
+	$scope.userid="User1";
+	$scope.city="Santa Clara";
+	$scope.country="USA";
+	$scope.title="Ten More Years of Unseen Worlds";
+	$scope.blurb="With our tenth year as a record label almost under our belt, we're looking to make 2018 and beyond our best years yet.";
+	
+	$scope.goal="1000";
+	$scope.raised="180";
+	$scope.percentComplete = ($scope.raised/$scope.goal)*100;
+	$scope.description="I'm Tommy McCutchon and I started Unseen Worlds with my good friend Neil Fauerso in Austin, Texas in 2006.  We created the Unseen Worlds label under the guiding principle that deeply-affecting, worldview-altering avant-garde music can come in the form of highly accessible records. These records transform the fabric of our every day lives in a way that is benevolent and non-escapist, allowing them to be easily overlooked while they deserve to be treated with the same care and attention as commercial, canonical, and popular favorites.";
+	
 });
 
 myApp.controller('userProfileController', function($scope, $http, httpPost, $location) {
