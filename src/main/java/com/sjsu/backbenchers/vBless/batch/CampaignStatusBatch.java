@@ -51,7 +51,7 @@ public class CampaignStatusBatch{
 						cal2.add(Calendar.DATE,Integer.parseInt(c.getDuration())); 
 						Date expDt = cal2.getTime();
 						
-						if((expDt.compareTo(todayDate)==0)) {
+						if((expDt.compareTo(todayDate)<=0)) {
 							c.setActive("N");
 							campaignRepository.save(c);
 							log.info("campaign start date : " + createDt);

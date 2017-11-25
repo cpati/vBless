@@ -7,7 +7,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.Table;
+
 @Entity
+@Table(appliesTo = "fund_details")
 public class FundDetails {
 	
 	

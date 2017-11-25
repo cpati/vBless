@@ -52,13 +52,10 @@ public class EmailService {
 			// fetch campaign details
 			Campaign campaign = campaignRepository.findByCampaignId(campaignId).get(0);
 
-			List<FundDetails> fundDetails = fundDetailsRep.findAll();
+			List<FundDetails> fundDetails = fundDetailsRep.findByCampaignId(campaignId);
 
 			// fetch total fund collected
-			int fundCollected = 0;
-			for (FundDetails fd : fundDetails) {
-				fundCollected = fundCollected + Integer.parseInt(fd.getAmountPaid());
-			}
+			Long fundCollected = fundDetailsRep.findTotalFundRaised(campaignId);
 
 			for (FundDetails fd : fundDetails) {
 				CampaignUser cu = campaignUserRepo.findByUserId(fd.getUserId());
@@ -82,8 +79,10 @@ public class EmailService {
 				message.setFrom(new InternetAddress(fromEmail));
 				message.addRecipient(Message.RecipientType.TO, new InternetAddress(cu.getEmail()));
 				String emailMessage = "vBless would like to thank you for the contribution you made for the campaign "
-						+ campaign.getCampaignTitle() + ". Our target was to collect " + campaign.getGoal() + " Dollars "
-						+ " and we were able to collect " + fundCollected + " Dollars.";
+						+ campaign.getCampaignTitle() + ".\n\nWe have currently raised " + fundCollected + " Dollars of " + 
+						campaign.getGoal() + " Dollars ."
+						+ "  It will be great for you to share this campaign with family and friends.\n\n\n Thanks,\n" + 
+						"Team vBless";
 
 				String emailSubject = "Thanks for your contribution";
 				message.setSubject(emailSubject);
