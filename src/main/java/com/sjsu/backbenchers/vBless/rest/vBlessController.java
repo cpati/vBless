@@ -8,6 +8,7 @@ import com.sjsu.backbenchers.vBless.entity.CampaignUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 @RequestMapping("/vBless/")
@@ -22,18 +23,18 @@ public class vBlessController {
 		return "Hello World!!!";
 	}
 	
-	@RequestMapping("/getCampaignUser")
+	@RequestMapping("/getCampaignUser/{userId}")
 	public CampaignUser getCampaignUser(@PathVariable("userId") String userId) {
 		return campaignUserRepository.findByUserId(userId);
 	}
 	
 	@RequestMapping("/updateCampaignUser")
-	public CampaignUser updateCampaignUser(@PathVariable("userId") String userId,
-			@PathVariable("firstname") String firstname,
-			@PathVariable("lastname") String lastname,
-			@PathVariable("email") String email,
-			@PathVariable("phone") String phone,
-			@PathVariable("paymentinfo") String paymentinfo
+	public CampaignUser updateCampaignUser(@RequestParam(value="userId", required=true) String userId,
+			@RequestParam(value="firstname", required=true) String firstname,
+			@RequestParam(value="lastname", required=true) String lastname,
+			@RequestParam(value="email", required=true) String email,
+			@RequestParam(value="phone", required=true) String phone,
+			@RequestParam(value="paymentinfo", required=true) String paymentinfo
 			) {
 		CampaignUser campaignUser = new CampaignUser(userId, firstname, lastname, email, phone, paymentinfo);
 		return campaignUserRepository.save(campaignUser);

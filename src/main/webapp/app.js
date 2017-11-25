@@ -27,33 +27,69 @@ myApp.config(function($routeProvider, $qProvider) {
 	$qProvider.errorOnUnhandledRejections(false);
 });
 
-myApp.controller('userProfileController', function($scope, $http, $location) {
+myApp.controller('userProfileController', function($scope, $http, httpPost, $location) {
 	console.log("userProfileController");
+	$scope.userid="1";
+	
+
+	$http.get("/vBless/vBless/getCampaignUser/" + $scope.userid).then(
+	function(response) {
+		console.log("getUser:" + $scope.userid);
+		console.log(response.data);
+		$scope.firstname = response.data.firstname;
+		$scope.lastname = response.data.lastname;
+		$scope.email = response.data.email;
+		$scope.phone = response.data.phone;
+		$scope.paymentinfo = response.data.paymentinfo;
+	});
+	
+	$scope.doSave = function(){
+	      
+	       var url = "http://"+$location.$$host+':'+$location.$$port+"/vBless/vBless/updateCampaignUser";
+	       
+	       var data = new FormData();
+	       data.append('userId',$scope.userid);
+	       data.append('firstname',$scope.firstname);
+	       data.append('lastname',$scope.lastname);
+	       data.append('phone', $scope.phone);
+	       data.append('email',$scope.email);
+	       data.append('paymentinfo',$scope.paymentinfo);
+	       
+	       var config = {
+	    	   	transformRequest: angular.identity,
+	    	   	transformResponse: angular.identity,
+		   		headers : {
+		   			'Content-Type': undefined
+		   	    }
+	       }
+	       
+	       $http.post(url, data, config).then(function (response) {
+	    	   if(response.data != "FAIL")  {
+	    		   console.log("Campaign user details saved ");
+	    		   $location.url("list");
+	    	   }
+			});
+	    };
+	    
+	$scope.doCancel = function(){
+    	console.log("Edit campaignUser cancelled")
+    	$location.url("list");
+    }
+
 });
 
 myApp.controller('logoutController', function($scope, $http, $location) {
 	console.log("logoutController");
 });
 
-myApp
-		.controller(
-				'shareController',
-				function($scope, $http, $location) {
-					console.log("shareController");
-					// var id = 10;
-					$scope.title = "lets hardcode title, will fetch from campaign later, For details visit";
-					// $scope.url="http://"+$location.$$host+':'+$location.$$port+"/vBless/campaignDetails/"
-					// +id;
-
-					// twttr.widgets.createShareButton(
-					// 'tweetButton',
-					// document.getElementById('container'),
-					// {
-					// text: "hello world"
-					// }
-					// );
-
-				});
+myApp.controller('shareController', function($scope, $http, $location) {
+	console.log("shareController");
+	var id = 10;
+	$scope.title = "lets hardcode title, will fetch from campaign later, For details visit";
+	$scope.shareurl="http://"+$location.$$host+':'+$location.$$port+"/vBless";
+//	$scope.shareurl="http://"+$location.$$host+':'+$location.$$port+"/vBless/campaignDetails/" +id;
+	
+});
 
 
 /* Campaign Controller Implementation Start */

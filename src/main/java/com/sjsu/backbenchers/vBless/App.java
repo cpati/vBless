@@ -6,8 +6,11 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.orm.jpa.vendor.HibernateJpaSessionFactoryBean;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 
 @SpringBootApplication
+@EnableScheduling
 public class App extends SpringBootServletInitializer 
 {
 	@Override
