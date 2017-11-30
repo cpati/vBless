@@ -1,0 +1,40 @@
+<div class="container">
+	<div id="myCarousel" class="carousel slide" data-ride="carousel"
+		data-interval="2000">
+
+		<!-- Wrapper for slides -->
+		<div class="carousel-inner">
+			<div class="item active">
+				<div style="{{heroCardCss(campaignsFirst.image)}}">
+					<div class="hero-text">
+						<h1 style="font-size: 50px">{{campaignsFirst.title}}</h1>
+						<h1 style="font-size: 30px">{{campaignsFirst.createdBy}}</h1>
+						<h1 style="font-size: 30px">{{campaignsFirst.initDesc}}</h1>
+						<button>Donate</button>
+						<br>
+					</div>
+				</div>
+			</div>
+			<div class="item" ng-repeat="campaign in campaignsRest">
+				<div style="{{heroCardCss(campaign.image)}}">
+					<div class="hero-text">
+						<h1 style="font-size: 50px">{{campaign.title}}</h1>
+						<h1 style="font-size: 30px">{{campaign.createdBy}}</h1>
+						<h1 style="font-size: 30px">{{campaign.initDesc}}</h1>
+						<button>Donate</button>
+						<br>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Left and right controls -->
+		<a class="left carousel-control" data-slide="prev"> <span
+			class="glyphicon glyphicon-chevron-left"></span> <span
+			class="sr-only">Previous</span>
+		</a> <a class="right carousel-control" data-slide="next"> <span
+			class="glyphicon glyphicon-chevron-right"></span> <span
+			class="sr-only">Next</span>
+		</a>
+	</div>
+</div>

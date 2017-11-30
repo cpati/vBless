@@ -1,14 +1,15 @@
 package com.sjsu.backbenchers.vBless.rest;
 
-import org.springframework.web.bind.annotation.RestController;
-
-import com.sjsu.backbenchers.vBless.entity.CampaignUser;
-import com.sjsu.backbenchers.vBless.entity.CampaignUserRepository;
+import java.security.Principal;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.sjsu.backbenchers.vBless.entity.CampaignUser;
+import com.sjsu.backbenchers.vBless.entity.CampaignUserRepository;
 
 @RestController
 @RequestMapping("/vBless/")
@@ -17,6 +18,10 @@ public class vBlessController {
 	@Autowired
 	private CampaignUserRepository campaignUserRepository;
 	
+	@RequestMapping("/user")
+	public Principal user(Principal principal) {
+	    return principal;
+	}
 	
 	@RequestMapping("/test")
 	public String test() {

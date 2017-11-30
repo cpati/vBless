@@ -1,0 +1,22 @@
+<div ng-controller="shareController"
+	class="container theme-showcase jumbotron panel panel-primary"
+	style="background-color: white;">
+	<h4>Share buttons (TODO : place these in campaign page)</h4>
+	<a class="twitter-share-button" href="https://twitter.com/intent/tweet?text={{title}}">
+		Tweet</a>
+		
+		<br/>
+		<br/>
+		<div>
+			<div id="fb-root"></div>
+				<script>(function(d, s, id) {
+				  var js, fjs = d.getElementsByTagName(s)[0];
+				  if (d.getElementById(id)) return;
+				  js = d.createElement(s); js.id = id;
+				  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.11';
+				  fjs.parentNode.insertBefore(js, fjs);
+				}(document, 'script', 'facebook-jssdk'));</script>
+			
+			  <div class="fb-share-button" data-href="http://www.google.com" data-layout="button" data-size="large" data-mobile-iframe="false"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A5000%2F&amp;src=sdkpreparse">Share</a></div>
+	 	 </div>
+</div>		

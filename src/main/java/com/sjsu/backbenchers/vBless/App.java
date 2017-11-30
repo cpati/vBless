@@ -1,6 +1,7 @@
 package com.sjsu.backbenchers.vBless;
 
 import org.springframework.boot.SpringApplication;
+//import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
@@ -11,6 +12,7 @@ import org.springframework.batch.core.configuration.annotation.EnableBatchProces
 
 @SpringBootApplication
 @EnableScheduling
+//@EnableOAuth2Sso
 public class App extends SpringBootServletInitializer 
 {
 	@Override
