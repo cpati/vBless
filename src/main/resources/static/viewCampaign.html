@@ -23,12 +23,19 @@
 		  aria-valuemin="0" aria-valuemax="100" style="width:{{percentComplete}}%">{{percentComplete}}%
 		  </div>
 	  </div>
-	  <h4 class="text-primary">Fund Raised ${{raised}}</h4>
-	  <h5 class="text-muted">Goal ${{goal}}</h5>
+	  <h5 class="text-primary">Fund Raised ${{raised}}</h5>
+	  <h4 class="text-primary">Goal : ${{goal}}</h4>
 	  <br/>
 	  <h5 class="text-muted">Created by {{userid}}
 	  <br/>{{city}},{{country}}</h5>
-	  <button type="submit" class="btn btn-primary  btn-block" ng-click="">Donate</button>
+	<br/>
+		<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top">
+		<input type="hidden" name="cmd" value="_s-xclick">
+		<input type="hidden" name="hosted_button_id" value="J68EUH3FSJYWU">
+		<input type="image" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+		<img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+		</form>
+
 	  <br/>
 	  <div class="row">
 	  		<div class="col-sm-2">
